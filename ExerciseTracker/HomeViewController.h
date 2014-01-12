@@ -10,7 +10,7 @@
 #import "AppDelegate.h"
 #import "ExerciseTableViewController.h"
 
-@interface HomeViewController : UIViewController
+@interface HomeViewController : UIViewController<UITextFieldDelegate>
 {
     AppDelegate *appDelegate;
     ExerciseTableViewController *exerciseList;

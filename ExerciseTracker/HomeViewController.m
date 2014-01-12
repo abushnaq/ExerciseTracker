@@ -66,4 +66,13 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark UITextFieldDelegate methods
+
+- (BOOL) textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    [self saveExercise:nil];
+    return YES;
+}
+
 @end
