@@ -58,6 +58,13 @@
     exerciseList.tableView.frame = frame;
 
     [self.containerView addSubview:exerciseList.tableView];
+    
+    UIBarButtonItem *statsItem = self.navigationItem.rightBarButtonItem;
+    UIBarButtonItem *saveItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveExercise:)];
+    
+    self.navigationItem.rightBarButtonItem = saveItem;
+    self.navigationItem.leftBarButtonItem = statsItem;
+
 }
 
 - (void)didReceiveMemoryWarning

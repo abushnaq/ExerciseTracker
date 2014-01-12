@@ -25,6 +25,7 @@
 		9382009C1880C87000596E3A /* ExerciseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9382009B1880C87000596E3A /* ExerciseTableViewController.m */; };
 		9382009F1880C93C00596E3A /* Exercise.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9382009D1880C93C00596E3A /* Exercise.xcdatamodeld */; };
 		938200A418816F1B00596E3A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 938200A318816F1B00596E3A /* CoreData.framework */; };
+		93F587791882E7F7005789AD /* ExerciseStatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F587781882E7F7005789AD /* ExerciseStatsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,8 @@
 		9382009E1880C93C00596E3A /* Exercise.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Exercise.xcdatamodel; sourceTree = "<group>"; };
 		938200A318816F1B00596E3A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		93DFBCEA1881E7B100847A9C /* ExerciseConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ExerciseConstants.h; path = ../ExerciseConstants.h; sourceTree = "<group>"; };
+		93F587771882E7F7005789AD /* ExerciseStatsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseStatsViewController.h; sourceTree = "<group>"; };
+		93F587781882E7F7005789AD /* ExerciseStatsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseStatsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +176,8 @@
 				9382007B1880C55500596E3A /* HomeViewController.m */,
 				9382009A1880C87000596E3A /* ExerciseTableViewController.h */,
 				9382009B1880C87000596E3A /* ExerciseTableViewController.m */,
+				93F587771882E7F7005789AD /* ExerciseStatsViewController.h */,
+				93F587781882E7F7005789AD /* ExerciseStatsViewController.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -286,6 +291,7 @@
 			files = (
 				9382007C1880C55500596E3A /* HomeViewController.m in Sources */,
 				930116DA1881C246009D1761 /* Exercise.m in Sources */,
+				93F587791882E7F7005789AD /* ExerciseStatsViewController.m in Sources */,
 				938200761880C55500596E3A /* AppDelegate.m in Sources */,
 				938200721880C55500596E3A /* main.m in Sources */,
 				9382009C1880C87000596E3A /* ExerciseTableViewController.m in Sources */,

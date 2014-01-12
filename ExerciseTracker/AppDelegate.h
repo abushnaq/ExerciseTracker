@@ -28,4 +28,6 @@
 
 // refresh from core data
 - (void) reload;
+
+- (Exercise*) longestExerciseOfType:(int) type;
 @end

@@ -10,6 +10,7 @@
 
 
 #define     kEntityName             @"Exercise"
+#define     kDurationFieldName      @"duration"
 #define     kStoreName              [NSString stringWithFormat:@"%@.sqlite", kEntityName]
 
 #define     kStoryboardName                     @"Main"
