@@ -39,23 +39,25 @@
                                               inManagedObjectContext:objectContext];
     NSError *err;
     [fetchRequest setEntity:entity];
-//    [fetchRequest setFetchLimit:19];
+
+    // we could set the predicate on the fetch request so that we fetch only the type we need
+    // but instead we filter in memory so that we only do one dip into the database instead of 3.
     NSArray *allExercises = [objectContext executeFetchRequest:fetchRequest error:&err];
     _runs = [[NSMutableArray alloc] initWithArray:[allExercises filteredArrayUsingPredicate:
              [NSPredicate predicateWithBlock:^BOOL(Exercise *evaluatedObject, NSDictionary *bindings)
                    {
-                       return evaluatedObject.type == 0;
+                       return evaluatedObject.type == kExerciseTypeRunID;
                    }]]];
     
     _weights = [[NSMutableArray alloc] initWithArray:[allExercises filteredArrayUsingPredicate:
              [NSPredicate predicateWithBlock:^BOOL(Exercise *evaluatedObject, NSDictionary *bindings)
               {
-                  return evaluatedObject.type == 1;
+                  return evaluatedObject.type == kExerciseTypeWeightsID;
               }]]];
     _swims = [[NSMutableArray alloc] initWithArray:[allExercises filteredArrayUsingPredicate:
              [NSPredicate predicateWithBlock:^BOOL(Exercise *evaluatedObject, NSDictionary *bindings)
               {
-                  return evaluatedObject.type == 2;
+                  return evaluatedObject.type == kExerciseTypeSwimsID;
               }]]];
     
 
