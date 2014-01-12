@@ -19,17 +19,22 @@
 
 - (IBAction)saveExercise:(id)sender
 {
+    // create our new exercise object and populate it from the UI.
     Exercise *newExercise = [appDelegate newExercise];
     newExercise.duration = [self.duration.text intValue];
     newExercise.type = self.exerciseType.selectedSegmentIndex;
     newExercise.timestamp = [self.startTime.date timeIntervalSince1970];
     
-    
-    
+    // save it
     [appDelegate save];
+    
+    // reload to make sure that the per-type arrays for the exercises are up to date.
     [appDelegate reload];
+    
+    // dismiss the keyboard
     [self.duration resignFirstResponder];
     
+    // update our exercise table.
     [exerciseList.tableView reloadData];
 
 }
@@ -41,20 +46,18 @@
     [super viewDidLoad];
     appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main"
+    // instantiate the exercise list and keep a reference to it for later(so we can refresh the table
+    // when new data is added)
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:kStoryboardName
                                                              bundle: nil];
-    exerciseList = [mainStoryboard instantiateViewControllerWithIdentifier:@"exerciseList"];
-    //exerciseList.tableView.frame = self.containerView.frame;
-//    self.containerView.clipsToBounds = YES;
+    exerciseList = [mainStoryboard instantiateViewControllerWithIdentifier:kExerciseListControllerID];
+
+    // make sure the table doesn't overflow its container, then add it to the container
     CGRect frame = exerciseList.tableView.frame;
     frame.size.height = self.containerView.frame.size.height;
-    self.containerView.translatesAutoresizingMaskIntoConstraints = NO;
-    exerciseList.tableView.translatesAutoresizingMaskIntoConstraints = NO;
     exerciseList.tableView.frame = frame;
 
     [self.containerView addSubview:exerciseList.tableView];
-//    exerciseList
-	// Do any additional setup after loading the view, typically from a nib.
 }
 
 - (void)didReceiveMemoryWarning

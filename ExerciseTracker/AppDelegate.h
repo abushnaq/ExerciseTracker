@@ -21,9 +21,11 @@
 @property (nonatomic, strong) NSMutableArray *swims;
 
 
+// get a new object, save, and delete.
 - (Exercise*) newExercise;
-
 - (void) save;
 - (void) deleteObject:(Exercise*) exercise;
+
+// refresh from core data
 - (void) reload;
 @end

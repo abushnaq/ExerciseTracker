@@ -38,8 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		930116D81881C246009D1761 /* Exercise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Exercise.h; path = ExerciseTracker/Exercise.h; sourceTree = "<group>"; };
-		930116D91881C246009D1761 /* Exercise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Exercise.m; path = ExerciseTracker/Exercise.m; sourceTree = "<group>"; };
+		930116D81881C246009D1761 /* Exercise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exercise.h; sourceTree = "<group>"; };
+		930116D91881C246009D1761 /* Exercise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Exercise.m; sourceTree = "<group>"; };
 		938200621880C55500596E3A /* ExerciseTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExerciseTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		938200651880C55500596E3A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		938200671880C55500596E3A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -63,6 +63,7 @@
 		9382009B1880C87000596E3A /* ExerciseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseTableViewController.m; sourceTree = "<group>"; };
 		9382009E1880C93C00596E3A /* Exercise.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Exercise.xcdatamodel; sourceTree = "<group>"; };
 		938200A318816F1B00596E3A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		93DFBCEA1881E7B100847A9C /* ExerciseConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ExerciseConstants.h; path = ../ExerciseConstants.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,8 +94,6 @@
 		938200591880C55500596E3A = {
 			isa = PBXGroup;
 			children = (
-				930116D81881C246009D1761 /* Exercise.h */,
-				930116D91881C246009D1761 /* Exercise.m */,
 				9382006B1880C55500596E3A /* ExerciseTracker */,
 				9382008A1880C55600596E3A /* ExerciseTrackerTests */,
 				938200641880C55500596E3A /* Frameworks */,
@@ -126,16 +125,13 @@
 		9382006B1880C55500596E3A /* ExerciseTracker */ = {
 			isa = PBXGroup;
 			children = (
+				93DFBCEA1881E7B100847A9C /* ExerciseConstants.h */,
 				938200741880C55500596E3A /* AppDelegate.h */,
 				938200751880C55500596E3A /* AppDelegate.m */,
-				938200771880C55500596E3A /* Main.storyboard */,
-				9382007A1880C55500596E3A /* HomeViewController.h */,
-				9382007B1880C55500596E3A /* HomeViewController.m */,
+				93DFBCEB18820D1B00847A9C /* UI */,
 				9382007D1880C55500596E3A /* Images.xcassets */,
 				9382006C1880C55500596E3A /* Supporting Files */,
-				9382009A1880C87000596E3A /* ExerciseTableViewController.h */,
-				9382009B1880C87000596E3A /* ExerciseTableViewController.m */,
-				9382009D1880C93C00596E3A /* Exercise.xcdatamodeld */,
+				93DFBCEC18820D2E00847A9C /* Data Model */,
 			);
 			path = ExerciseTracker;
 			sourceTree = "<group>";
@@ -167,6 +163,28 @@
 				9382008D1880C55600596E3A /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		93DFBCEB18820D1B00847A9C /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				938200771880C55500596E3A /* Main.storyboard */,
+				9382007A1880C55500596E3A /* HomeViewController.h */,
+				9382007B1880C55500596E3A /* HomeViewController.m */,
+				9382009A1880C87000596E3A /* ExerciseTableViewController.h */,
+				9382009B1880C87000596E3A /* ExerciseTableViewController.m */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		93DFBCEC18820D2E00847A9C /* Data Model */ = {
+			isa = PBXGroup;
+			children = (
+				930116D81881C246009D1761 /* Exercise.h */,
+				930116D91881C246009D1761 /* Exercise.m */,
+				9382009D1880C93C00596E3A /* Exercise.xcdatamodeld */,
+			);
+			name = "Data Model";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

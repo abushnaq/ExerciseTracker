@@ -16,26 +16,16 @@
 
 @implementation ExerciseTableViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    // keep a reference to the app delegate so that we can access per-type exercise lists more
+    // easily later.
     appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    
+    // create our formatter for showing the date in the list
     formatter = [[NSDateFormatter alloc] init];
-    formatter.dateFormat = @"MM/dd/yyyy";
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    formatter.dateFormat = kDateFormat;
 }
 
 - (void)didReceiveMemoryWarning
@@ -48,15 +38,11 @@
 {
     switch (section) {
         case 0:
-            return @"Runs";
-            break;
+            return kExerciseTypeRunString;
         case 1:
-            return @"Weights";
-            break;
+            return kExerciseTypeWeightsString;
         case 2:
-            return @"Swims";
-            break;
-            
+            return kExerciseTypeSwimsString;
         default:
             
             break;
@@ -68,20 +54,20 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-
+    // run, weights, swim
     return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     switch (section) {
-        case 0:
+        case kExerciseTypeRunID:
             return appDelegate.runs.count;
             break;
-        case 1:
+        case kExerciseTypeWeightsID:
             return appDelegate.weights.count;
             break;
-        case 2:
+        case kExerciseTypeSwimsID:
             return appDelegate.swims.count;
             break;
             
@@ -97,16 +83,16 @@
 {
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    // first, get the correct exercise
     Exercise *exercise = nil;
     switch (indexPath.section) {
-        case 0:
+        case kExerciseTypeRunID:
             exercise = appDelegate.runs[indexPath.row];
-
             break;
-        case 1:
+        case kExerciseTypeWeightsID:
             exercise = appDelegate.weights[indexPath.row];
             break;
-        case 2:
+        case kExerciseTypeSwimsID:
             exercise = appDelegate.swims[indexPath.row];
             break;
             
@@ -115,7 +101,8 @@
             break;
     }
     
-    // Configure the cell...
+    
+    // Now populate the cell for display
     NSDate *dateOfExercise = [[NSDate alloc] initWithTimeIntervalSince1970:exercise.timestamp];
     cell.textLabel.text = [NSString stringWithFormat:@"%@", [formatter stringFromDate:dateOfExercise]];
     
@@ -123,32 +110,22 @@
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-
-// Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
+        // first, get the correct exercise object and remove it from the appropriate collection
         Exercise *exercise = nil;
 
         switch (indexPath.section) {
-            case 0:
+            case kExerciseTypeRunID:
                 exercise = appDelegate.runs[indexPath.row];
                 [appDelegate.runs removeObject:exercise];
                 break;
-            case 1:
+            case kExerciseTypeWeightsID:
                 exercise = appDelegate.weights[indexPath.row];
                 [appDelegate.weights removeObject:exercise];
                 break;
-            case 2:
+            case kExerciseTypeSwimsID:
                 exercise = appDelegate.swims[indexPath.row];
                 [appDelegate.swims removeObject:exercise];
                 break;
@@ -157,10 +134,11 @@
                 
                 break;
         }
-        
+        // then delete it from storage and save
         [appDelegate deleteObject:exercise];
         [appDelegate save];
-        // Delete the row from the data source
+        
+        // now delete the row in the UI.
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
         
 
